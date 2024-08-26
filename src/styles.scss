@@ -3,6 +3,8 @@
 $primary-color: #72035d;
 $secondary-color: #ccc;
 $primary-background: #ffffff;
+$success-color: #90ee90;
+$warning-color: #f08080;
 $font-family: 'Open Sauce One', sans-serif;
 $border-radius: 4px;
 $font-size-base: 16px;
@@ -31,35 +33,67 @@ body {
 }
 
 .common-text-style {
-  font-size: clamp(1rem, 12rem, 12rem);
   text-align: center;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+}
 
-  @media (max-width: 600px) {
-    font-size: clamp(1rem, 5rem, 5rem);
+.event-name {
+  color: $primary-color;
+  font-weight: 800;
+
+  @media (max-width: 599px) {
+    font-size: 5rem;
+  }
+
+  @media (min-width: 600px) and (max-width: 899px) {
+    font-size: 10rem;
+  }
+
+  @media (min-width: 900px) and (max-width: 1199px) {
+    font-size: 11rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 12rem;
   }
 }
 
 .countdown-wrapper {
   width: 100%;
-  font-size: clamp(1rem, 6vw, 5rem);
   margin: 10px auto 0 auto;
+
+  @media (max-width: 599px) {
+    font-size: clamp(1rem, 3rem, 5rem);
+  }
+
+  @media (min-width: 600px) and (max-width: 899px) {
+    font-size: clamp(5rem, 5.5rem, 8rem);
+  }
+
+  @media (min-width: 900px) and (max-width: 1199px) {
+    font-size: clamp(6rem, 8rem, 10rem);
+  }
+
+  @media (min-width: 1200px) {
+    font-size: clamp(9rem, 9rem, 11rem);
+  }
 }
 
 form {
   display: flex;
-  width: 30vh;
+  width: 80%;
+  max-width: 500px;
   flex-direction: column;
   margin-inline: auto;
   gap: 1rem;
   margin-top: 50px;
 
   @media (min-width: 600px) {
-    width: 50vh;
+    width: 100%;
     flex-direction: row;
     margin-inline: auto;
     margin-top: 30px;
@@ -79,6 +113,7 @@ label {
 
   input {
     width: 100%;
+    min-width: 200px;
     padding: 12px;
     padding-top: 15px;
     box-sizing: border-box;
@@ -88,11 +123,11 @@ label {
   }
 
   input:user-valid {
-    border: 1px solid lightgreen;
+    border: 1px solid $success-color;
   }
 
   input:user-invalid {
-    border: 1px solid lightcoral;
+    border: 1px solid $warning-color;
   }
 
   .floating-label {
@@ -105,9 +140,4 @@ label {
     pointer-events: none;
     font-weight: 400;
   }
-}
-
-.event-name {
-  color: $primary-color;
-  font-weight: 800;
 }

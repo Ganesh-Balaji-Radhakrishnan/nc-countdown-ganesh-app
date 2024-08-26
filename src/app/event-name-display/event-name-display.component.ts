@@ -42,11 +42,6 @@ export class EventNameDisplayComponent implements OnChanges {
     }
   }
 
-  /*  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.isMobile = window.innerWidth <= 600
-  } */
-
   adjustFontSize() {
     const length = this.eventName.length
     let fontSize: number
@@ -78,7 +73,7 @@ export class EventNameDisplayComponent implements OnChanges {
           fontSize = 12
           break
         case length <= 10:
-          fontSize = 10
+          fontSize = 11
           break
         case length <= 20:
           fontSize = 6
