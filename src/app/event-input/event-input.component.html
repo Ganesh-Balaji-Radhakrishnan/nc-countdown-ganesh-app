@@ -21,8 +21,8 @@
       id="endDate"
       [(ngModel)]="endDate"
       name="endDate"
+      (change)="submit()"
       required
-      (keyup.enter)="submit()"
     />
   </div>
 </form>
