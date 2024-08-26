@@ -1,0 +1,28 @@
+<app-event-name-display [eventName]="eventName"></app-event-name-display>
+
+<app-countdown-timer></app-countdown-timer>
+
+<form (ngSubmit)="submit()" class="form-container">
+  <div class="input-wrapper">
+    <label for="eventName" class="floating-label">Title</label>
+    <input
+      id="eventName"
+      [(ngModel)]="eventName"
+      name="eventName"
+      maxlength="90"
+      required
+    />
+  </div>
+
+  <div class="input-wrapper">
+    <label for="endDate" class="floating-label">Date</label>
+    <input
+      type="datetime-local"
+      id="endDate"
+      [(ngModel)]="endDate"
+      name="endDate"
+      required
+      (keyup.enter)="submit()"
+    />
+  </div>
+</form>
