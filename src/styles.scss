@@ -12,84 +12,65 @@ $font-size-base: 16px;
 * {
   margin: 0;
   padding: 0;
-  font-size: 10px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: $font-family;
+  font-size: 16px;
   font-weight: 400;
-  margin-inline: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
+}
+
+input {
+  width: 200px;
+  padding: 12px;
+  border: 1px solid $secondary-color;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: $font-size-base;
+  overflow: hidden;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input:user-valid {
+  border: 1px solid $success-color;
+}
+
+input:user-invalid {
+  border: 1px solid $warning-color;
 }
 
 .container {
+  width: 100%;
+  height: 100vh;
+  margin-inline: auto;
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  max-width: 100%;
 }
 
-.common-text-style {
-  text-align: center;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
-
-.event-name {
-  color: $primary-color;
-  font-weight: 800;
-
-  @media (max-width: 599px) {
-    font-size: 5rem;
-  }
-
-  @media (min-width: 600px) and (max-width: 899px) {
-    font-size: 10rem;
-  }
-
-  @media (min-width: 900px) and (max-width: 1199px) {
-    font-size: 11rem;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 12rem;
-  }
-}
-
-.countdown-wrapper {
-  width: 100%;
-  margin: 10px auto 0 auto;
-
-  @media (max-width: 599px) {
-    font-size: clamp(1rem, 3rem, 5rem);
-  }
-
-  @media (min-width: 600px) and (max-width: 899px) {
-    font-size: clamp(5rem, 5.5rem, 8rem);
-  }
-
-  @media (min-width: 900px) and (max-width: 1199px) {
-    font-size: clamp(6rem, 8rem, 10rem);
-  }
-
-  @media (min-width: 1200px) {
-    font-size: clamp(9rem, 9rem, 11rem);
-  }
-}
-
-form {
+.child-container {
+  min-width: 100%;
+  min-height: 500px;
   display: flex;
-  width: 80%;
-  max-width: 500px;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-inline: auto;
   gap: 1rem;
   margin-top: 50px;
@@ -102,35 +83,49 @@ form {
   }
 }
 
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
+.event-name-wrapper {
+  color: $primary-color;
+  font-weight: 800;
+  margin: 10px 50px;
+  padding-inline: 15px;
+  white-space: nowrap;
+}
+
+.countdown-wrapper {
+  width: 100%;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-name-wrapper,
+.countdown-wrapper {
+  @media (max-width: 599px) {
+    font-size: clamp(1rem, 2rem, 5rem);
+  }
+
+  @media (min-width: 600px) and (max-width: 899px) {
+    font-size: clamp(4rem, 4.5rem, 12rem);
+  }
+
+  @media (min-width: 900px) and (max-width: 1199px) {
+    font-size: clamp(5rem, 7rem, 7rem);
+  }
+
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    font-size: clamp(7rem, 7.8rem, 9rem);
+  }
+
+  @media (min-width: 1400px) {
+    font-size: clamp(8rem, 11rem, 12rem);
+  }
 }
 
 .input-wrapper {
   position: relative;
-  width: 100%;
-  max-width: 500px;
   margin-right: 10px;
-
-  input {
-    width: 100%;
-    min-width: 200px;
-    padding: 12px;
-    padding-top: 15px;
-    box-sizing: border-box;
-    border: 1px solid $secondary-color;
-    border-radius: 4px;
-    font-size: $font-size-base;
-  }
-
-  input:user-valid {
-    border: 1px solid $success-color;
-  }
-
-  input:user-invalid {
-    border: 1px solid $warning-color;
-  }
 
   .floating-label {
     position: absolute;

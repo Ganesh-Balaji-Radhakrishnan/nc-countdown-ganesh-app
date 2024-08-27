@@ -9,6 +9,7 @@ import {
   HostListener,
 } from '@angular/core'
 import { CountdownService } from '../countdown.service'
+import { FontSizeService } from '../font-size.service'
 
 @Component({
   selector: 'app-event-name-display',
@@ -17,8 +18,8 @@ import { CountdownService } from '../countdown.service'
 })
 export class EventNameDisplayComponent implements OnChanges {
   @Input() eventName: string = ''
-  fontSize: string = '2rem'
-  isMobile: boolean = window.innerWidth <= 600
+  placeholder: string = 'Your event here'
+  fontSize: string = '5rem'
 
   @ViewChild('eventText', { static: false }) divEventText:
     | ElementRef
@@ -28,6 +29,7 @@ export class EventNameDisplayComponent implements OnChanges {
     private el: ElementRef,
     private renderer: Renderer2,
     private countdownService: CountdownService,
+    private fontSizeService: FontSizeService,
   ) {}
 
   ngOnInit() {
@@ -43,59 +45,12 @@ export class EventNameDisplayComponent implements OnChanges {
   }
 
   adjustFontSize() {
-    const length = this.eventName.length
-    let fontSize: number
+    const screenWidth = window.innerWidth
+    this.fontSize = this.fontSizeService.getFontSize(
+      this.eventName,
+      screenWidth,
+    )
 
-    if (this.isMobile) {
-      switch (true) {
-        case length === 0:
-          fontSize = 5
-          break
-        case length <= 10:
-          fontSize = 4
-          break
-        case length <= 20:
-          fontSize = 3
-          break
-        case length <= 30:
-          fontSize = 2
-          break
-        case length <= 40:
-          fontSize = 1
-          break
-        default:
-          fontSize = 0.5
-          break
-      }
-    } else {
-      switch (true) {
-        case length === 0:
-          fontSize = 12
-          break
-        case length <= 10:
-          fontSize = 11
-          break
-        case length <= 20:
-          fontSize = 6
-          break
-        case length <= 30:
-          fontSize = 5
-          break
-        case length <= 40:
-          fontSize = 4
-          break
-        case length <= 50:
-          fontSize = 3
-          break
-        default:
-          fontSize = 2
-          break
-      }
-    }
-
-    this.fontSize = `${fontSize}rem`
-
-    // Check if `divEventText` is available before applying styles
     if (this.divEventText) {
       this.renderer.setStyle(
         this.divEventText.nativeElement,
@@ -103,7 +58,6 @@ export class EventNameDisplayComponent implements OnChanges {
         this.fontSize,
       )
     } else {
-      // Alternatively, apply styles to the host element
       this.renderer.setStyle(this.el.nativeElement, 'font-size', this.fontSize)
     }
   }

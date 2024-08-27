@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CountdownService } from '../countdown.service';
+import { Component, Input, OnInit } from '@angular/core'
+import { CountdownService } from '../countdown.service'
 
 @Component({
   selector: 'app-countdown-timer',
@@ -7,13 +7,15 @@ import { CountdownService } from '../countdown.service';
   styleUrls: ['./countdown-timer.component.scss'],
 })
 export class CountdownTimerComponent implements OnInit {
-  countdown: string = '';
+  @Input() placeholder: string = ''
+  countdown: string = ''
+  countdownPlaceHolder: string = `0 days,  0 h, 0m, 0s`
 
   constructor(private countdownService: CountdownService) {}
 
   ngOnInit() {
     this.countdownService.getTimer().subscribe((timer) => {
-      this.countdown = timer;
-    });
+      this.countdown = timer
+    })
   }
 }
