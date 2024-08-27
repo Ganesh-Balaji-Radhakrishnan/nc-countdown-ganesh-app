@@ -11,7 +11,7 @@ export class EventInputComponent {
   eventName: string = ''
   endDate: string = ''
   minDate: string = ''
-  eventNamePlaceholder: string = 'Your event here'
+  eventNamePlaceholder: string = 'Interview at NC'
   maxLength: number = 35
 
   constructor(private countdownService: CountdownService) {}

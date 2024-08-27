@@ -18,7 +18,7 @@ import { FontSizeService } from '../font-size.service'
 })
 export class EventNameDisplayComponent implements OnChanges {
   @Input() eventName: string = ''
-  placeholder: string = 'Your event here'
+  placeholder: string = 'Interivew at NC'
   fontSize: string = '5rem'
 
   @ViewChild('eventText', { static: false }) divEventText:
