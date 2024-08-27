@@ -12,7 +12,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 `<link
       rel="stylesheet"
-      href="styles.456e9586aca99101.css"
+      href="styles.<HASH>.css"
       media="print"
       onload="this.media='all'"
     />`
@@ -25,6 +25,6 @@ https://nc-countdown-app-ganesh.netlify.app
 
 ## App improvements
 
-- \*\*Using a button to submit the form instead of keydown
-- \*\*Making use of more user-friendly date pickers to select date and time
-- \*\*Displaying error messages through toasts or banners instead of alerts
+- Using a button to submit the form instead of keydown
+- Making use of more user-friendly date pickers to select date and time
+- Displaying error messages for certain use cases through toasts or banners instead of alerts
