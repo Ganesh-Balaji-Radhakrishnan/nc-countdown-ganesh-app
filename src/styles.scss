@@ -20,13 +20,14 @@ body {
   font-family: $font-family;
   font-weight: 400;
   margin-inline: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   height: 100vh;
