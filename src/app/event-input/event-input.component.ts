@@ -35,7 +35,7 @@ export class EventInputComponent {
     const screenWidth = window.innerWidth
 
     if (screenWidth <= 599) {
-      this.maxLength = 15
+      this.maxLength = 25
     } else if (screenWidth <= 899) {
       this.maxLength = 25
     } else if (screenWidth <= 1199) {

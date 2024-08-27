@@ -22,7 +22,8 @@ export class FontSizeService {
         { maxLen: 12, size: 3.3 },
         { maxLen: 14, size: 3 },
         { maxLen: 16, size: 2.8 },
-        { maxLen: Infinity, size: 1 },
+        { maxLen: 20, size: 2.3 },
+        { maxLen: Infinity, size: 1.8 },
       ]
     } else if (screenWidth <= 899) {
       fontSizeSteps = [
