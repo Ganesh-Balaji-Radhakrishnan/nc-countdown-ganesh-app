@@ -6,24 +6,25 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`Run ng build` to build the project. The build artifacts will be stored in the `dist/` directory. The production version of the app does not work as generated. To make it work, you need to remove the `media` and `onload` properties from the `<link>` element in the root HTML file.
 
-## Running unit tests
+`<link
+      rel="stylesheet"
+      href="styles.456e9586aca99101.css"
+      media="print"
+      onload="this.media='all'"
+    />`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Deployment
 
-## Running end-to-end tests
+The production version of the app is deployed in Netlify and can be accessed through the following URL
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+https://nc-countdown-app-ganesh.netlify.app
 
 ## App improvements
+
+- \*\*Using a button to submit the form instead of keydown
+- \*\*Making use of more user-friendly date pickers to select date and time
+- \*\*Displaying error messages through toasts or banners instead of alerts
