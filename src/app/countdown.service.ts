@@ -10,15 +10,18 @@ export class CountdownService {
   private timer$ = new BehaviorSubject<string>('')
   private eventName$ = new BehaviorSubject<string>('')
 
+  private readonly EXPIRY_DURATION_MS = 15 * 60 * 1000
+  private readonly STORAGE_KEY_PREFIX = 'nccountdown_'
+
   constructor() {
-    this.loadFromStorage()
+    this.loadFromSessionStorage()
     this.startCountdown()
   }
 
   setEvent(name: string, date: Date) {
     this.eventName = name
     this.endDate = date
-    this.saveToStorage()
+    this.saveToSessionStorage()
     this.startCountdown()
   }
 
@@ -61,21 +64,47 @@ export class CountdownService {
     }
   }
 
-  private saveToStorage() {
+  private saveToSessionStorage() {
     if (this.eventName && this.endDate) {
-      localStorage.setItem('eventName', this.eventName)
-      localStorage.setItem('endDate', this.endDate.toString())
+      sessionStorage.setItem(
+        `${this.STORAGE_KEY_PREFIX}eventName`,
+        this.eventName,
+      )
+      sessionStorage.setItem(
+        `${this.STORAGE_KEY_PREFIX}endDate`,
+        this.endDate.toString(),
+      )
+      sessionStorage.setItem(
+        `${this.STORAGE_KEY_PREFIX}timestamp`,
+        new Date().getTime().toString(),
+      )
     }
   }
 
-  private loadFromStorage() {
-    const storedName = localStorage.getItem('eventName')
-    const storedDate = localStorage.getItem('endDate')
+  private loadFromSessionStorage() {
+    const storedName = sessionStorage.getItem(
+      `${this.STORAGE_KEY_PREFIX}eventName`,
+    )
+    const storedDate = sessionStorage.getItem(
+      `${this.STORAGE_KEY_PREFIX}endDate`,
+    )
+    const storedTimestamp = sessionStorage.getItem(
+      `${this.STORAGE_KEY_PREFIX}timestamp`,
+    )
 
-    if (storedName && storedDate) {
-      this.eventName = storedName
-      this.endDate = new Date(storedDate)
-      this.eventName$.next(storedName)
+    if (storedTimestamp) {
+      const currentTime = new Date().getTime()
+      const timestamp = parseInt(storedTimestamp, 10)
+
+      if (currentTime - timestamp > this.EXPIRY_DURATION_MS) {
+        sessionStorage.clear()
+      } else {
+        if (storedName && storedDate) {
+          this.eventName = storedName
+          this.endDate = new Date(storedDate)
+          this.eventName$.next(storedName)
+        }
+      }
     }
   }
 }
