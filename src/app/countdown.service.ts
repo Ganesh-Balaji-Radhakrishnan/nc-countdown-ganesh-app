@@ -10,7 +10,7 @@ export class CountdownService {
   private timer$ = new BehaviorSubject<string>('')
   private eventName$ = new BehaviorSubject<string>('')
 
-  private readonly EXPIRY_DURATION_MS = 15 * 60 * 1000
+  private readonly EXPIRY_DURATION_MS = 1 * 60 * 60 * 1000
   private readonly STORAGE_KEY_PREFIX = 'nccountdown_'
 
   constructor() {
