@@ -81,7 +81,7 @@ export class FontSizeService {
         { maxLen: 34, size: 4.3 },
         { maxLen: 36, size: 4.0 },
         { maxLen: 38, size: 3.8 },
-        { maxLen: Infinity, size: 3.5 },
+        { maxLen: Infinity, size: 3 },
       ]
     } else {
       fontSizeSteps = [
