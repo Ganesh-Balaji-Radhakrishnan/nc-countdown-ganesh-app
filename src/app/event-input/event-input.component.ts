@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms'
 @Component({
   selector: 'app-event-input',
   templateUrl: './event-input.component.html',
-  styleUrls: ['./event-input.component.scss'],
 })
 export class EventInputComponent {
   eventName: string = ''

@@ -14,7 +14,6 @@ import { FontSizeService } from '../font-size.service'
 @Component({
   selector: 'app-event-name-display',
   templateUrl: './event-name-display.component.html',
-  styleUrls: ['./event-name-display.component.scss'],
 })
 export class EventNameDisplayComponent implements OnChanges {
   @Input() eventName: string = ''
