@@ -8,9 +8,17 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Build
 
-`Run ng build` to build the project. The build artifacts will be stored in the `dist/` directory. The production version of the app does not work as generated. To make it work, you need to remove the `media` and `onload` properties from the `<link>` element in the root HTML file.
+`Run ng build` to build the project. The build artifacts will be stored in the `dist/` directory. The production version of the app doesn't render style files after its built so. To render the styles correctly, you need to
 
-`<link
+- add ` "optimization": {
+            "styles": {
+              "inlineCritical": false
+            }
+          }`
+  to `angular.json`file in the root
+
+- remove the `media` and `onload` properties from the `<link>` element in the root HTML file.
+  `<link
       rel="stylesheet"
       href="styles.<HASH>.css"
       media="print"
@@ -28,3 +36,4 @@ https://nc-countdown-app-ganesh.netlify.app
 - Using a button to submit the form instead of keydown
 - Making use of more user-friendly date pickers to select date and time
 - Displaying error messages for certain use cases through toasts or banners instead of alerts
+- Create a date-time picker wheel that provides consistent styling and behavior across all operating systems and browsers. The current picker relies on the native implementation, which can vary between different OS and browsers.
